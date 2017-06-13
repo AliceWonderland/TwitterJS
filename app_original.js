@@ -1,14 +1,11 @@
 const chalk=require('chalk');
 const express=require('express');
 const nunjucks=require('nunjucks');
-const routes = require('./routes');
 const app=express();
 
 app.listen(3000,function () {
     console.log("Listening on port 3000...");
 });
-
-app.use('/', routes);
 
 app.use(function (request,response,next) {
     // console.log("response",response);
@@ -34,10 +31,13 @@ app.use("/special",function (request,response,next) {
     response.send("I'm in SPECIAL, Hi!");
     next();
 });
-app.use(express.static('public'))
 
-// app.get("/stylesheets/style.css",function (request,response,next) {
-//     response.sendFile(__dirname+"/public/stylesheets/style.css");
+// app.get("/",function (request,response,next) {
+//     response.send("My Response, Hi!");
+// });
+//
+// app.get("/news",function (request,response,next) {
+//     response.send("I'm in NEWS, Hi!");
 // });
 
 
